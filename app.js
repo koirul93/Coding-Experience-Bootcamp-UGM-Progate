@@ -43,8 +43,11 @@ app.post('/create', (req, res) => {
     );
 });
 
-// Tambahkan rute untuk menghapus item
-app.post('/delete', (req, res) => {
+// Spesifikasikan route parameter
+app.post('/delete/:id', (req, res) => {
+    // Nilai output yang di teruskan ke rout parameter
+    console.log(req.params.id);
+
     res.redirect('/index');
 });
 

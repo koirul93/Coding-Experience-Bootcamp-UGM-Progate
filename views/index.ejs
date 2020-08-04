@@ -30,9 +30,9 @@
                         <span class="name-column"><%= item.name %></span>
                     </div>
                     <div class="item-menu">
-                        <!-- Tambahkan tag form -->
-                        <form action="/delete" method="post">
-                            <input type="submit" value="Hapus">
+                        <!-- Tambahkan nilai dari id item ke atribut action -->
+                        <form action="/delete/<%= item.id %>" method="post">
+                            <input type="submit" value="Delete">
                         </form>
                     </div>
                 </li>
