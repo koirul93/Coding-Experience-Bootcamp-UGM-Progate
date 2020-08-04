@@ -34,23 +34,16 @@ app.get('/new', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-    // Ketik kueri untuk menambahkan data ke database
     connection.query(
         'INSERT INTO items (name) VALUES (?)',
         [req.body.itemName],
         (error, results) => {
-            connection.query(
-                'SELECT * FROM items',
-                (error, results) => {
-                    res.render('index.ejs', {
-                        items: results
-                    });
-                }
-            );
+            // Hapus code di bawah
+            // Hapus sampai di sini
+            // Redirect ke halaman daftar belanjaan
+            res.redirect('/index');
         }
     );
-    // Hapus code dibawah yang menampilkan halaman daftar belanjaan
-    // Hapus sampai di sini
 });
 
 app.listen(3000);
