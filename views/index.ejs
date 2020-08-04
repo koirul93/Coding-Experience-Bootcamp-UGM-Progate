@@ -30,10 +30,11 @@
                         <span class="name-column"><%= item.name %></span>
                     </div>
                     <div class="item-menu">
-                        <!-- Tambahkan nilai dari id item ke atribut action -->
                         <form action="/delete/<%= item.id %>" method="post">
-                            <input type="submit" value="Delete">
+                            <input type="submit" value="Hapus">
                         </form>
+                        <!-- Tambahkan link yang memiliki tautan id dengan tujuan ke halaman edit  -->
+                        <a href="/edit/<%= item.id %>">Edit</a>
                     </div>
                 </li>
                 <% }) %>

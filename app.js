@@ -44,7 +44,6 @@ app.post('/create', (req, res) => {
 });
 
 app.post('/delete/:id', (req, res) => {
-    // Ketik code untuk menghapus data di database
     connection.query(
         'DELETE FROM items WHERE id = ?',
         [req.params.id],
@@ -52,7 +51,12 @@ app.post('/delete/:id', (req, res) => {
             res.redirect('/index');
         }
     );
-    // Hapus code di bawah
 });
+
+// tambahkan rute untuk halaman edit
+app.get('/edit/:id', (req, res) => {
+    res.render('edit.ejs');
+});
+
 
 app.listen(3000);
