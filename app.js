@@ -38,12 +38,14 @@ app.post('/create', (req, res) => {
         'INSERT INTO items (name) VALUES (?)',
         [req.body.itemName],
         (error, results) => {
-            // Hapus code di bawah
-            // Hapus sampai di sini
-            // Redirect ke halaman daftar belanjaan
             res.redirect('/index');
         }
     );
+});
+
+// Tambahkan rute untuk menghapus item
+app.post('/delete', (req, res) => {
+    res.redirect('/index');
 });
 
 app.listen(3000);
