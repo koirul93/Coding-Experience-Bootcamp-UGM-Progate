@@ -54,7 +54,6 @@ app.post('/delete/:id', (req, res) => {
 });
 
 app.get('/edit/:id', (req, res) => {
-    // Ketikan code untuk mendapatkan item yang dipilih dari database 
     connection.query(
         'SELECT * FROM items WHERE id = ?',
         [req.params.id],
@@ -64,8 +63,11 @@ app.get('/edit/:id', (req, res) => {
             });
         }
     );
-    // Hapus code di bawah
+});
 
+// Tambahkan rute untuk memperbarui item
+app.post('/update/:id', (req, res) => {
+    res.redirect('/index');
 });
 
 app.listen(3000);

@@ -18,9 +18,10 @@
         </div>
         <div class="item-form-wrapper">
             <p class="form-label">Item</p>
-            <form>
-                <!-- spesifikasikan nilai atribut value -->
-                <input type="text" value="<%= item.name %>">
+            <!-- Spesifikasikan URL tujuan dan method untuk tag form -->
+            <form action="/update/<%= item.id %>" method="post">
+                <!-- Spesifikasikan atribut name -->
+                <input type="text" name="itemName" value="<%= item.name %>">
                 <input type="submit" value="Perbarui">
             </form>
         </div>
