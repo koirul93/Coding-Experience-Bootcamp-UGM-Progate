@@ -3,6 +3,10 @@ const mysql = require('mysql');
 const app = express();
 
 app.use(express.static('public'));
+// Pastikan untuk mendapatkan nilai dari formulir yang di kirim
+app.use(express.urlencoded({
+    extended: false
+}));
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -30,8 +34,9 @@ app.get('/new', (req, res) => {
     res.render('new.ejs');
 });
 
-// Tambahkan route method untuk menambahkan item 
 app.post('/create', (req, res) => {
+    // Cetakkan nilai yang dikirimkan dari formulir
+    console.log(req.body.itemName);
     connection.query(
         'SELECT * FROM items',
         (error, results) => {
