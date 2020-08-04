@@ -43,12 +43,16 @@ app.post('/create', (req, res) => {
     );
 });
 
-// Spesifikasikan route parameter
 app.post('/delete/:id', (req, res) => {
-    // Nilai output yang di teruskan ke rout parameter
-    console.log(req.params.id);
-
-    res.redirect('/index');
+    // Ketik code untuk menghapus data di database
+    connection.query(
+        'DELETE FROM items WHERE id = ?',
+        [req.params.id],
+        (error, results) => {
+            res.redirect('/index');
+        }
+    );
+    // Hapus code di bawah
 });
 
 app.listen(3000);
