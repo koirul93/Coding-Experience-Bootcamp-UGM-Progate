@@ -65,9 +65,17 @@ app.get('/edit/:id', (req, res) => {
     );
 });
 
-// Tambahkan rute untuk memperbarui item
 app.post('/update/:id', (req, res) => {
-    res.redirect('/index');
+    // Ketik code untuk memperbarui item yang dipilih
+    connection.query(
+        'UPDATE items SET name = ? WHERE id = ?',
+        [req.body.itemName, req.params.id],
+        (error, results) => {
+            res.redirect('/index');
+        }
+    );
+    // Hapus code pengalihan ke halaman daftar
+
 });
 
 app.listen(3000);
