@@ -3,7 +3,6 @@ const mysql = require('mysql');
 const app = express();
 
 app.use(express.static('public'));
-// Pastikan untuk mendapatkan nilai dari formulir yang di kirim
 app.use(express.urlencoded({
     extended: false
 }));
@@ -35,16 +34,23 @@ app.get('/new', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-    // Cetakkan nilai yang dikirimkan dari formulir
-    console.log(req.body.itemName);
+    // Ketik kueri untuk menambahkan data ke database
     connection.query(
-        'SELECT * FROM items',
+        'INSERT INTO items (name) VALUES (?)',
+        [req.body.itemName],
         (error, results) => {
-            res.render('index.ejs', {
-                items: results
-            });
+            connection.query(
+                'SELECT * FROM items',
+                (error, results) => {
+                    res.render('index.ejs', {
+                        items: results
+                    });
+                }
+            );
         }
     );
+    // Hapus code dibawah yang menampilkan halaman daftar belanjaan
+    // Hapus sampai di sini
 });
 
 app.listen(3000);
