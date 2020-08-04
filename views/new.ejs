@@ -18,10 +18,15 @@
         </div>
         <div class="item-form-wrapper">
             <p class="form-label">Apa yang ingin Anda beli?</p>
-            <input type="text">
-            <input type="submit" value="Tambahkan">
+            <!-- Tambahkan tag form -->
+            <form action="/create" method="post">
+                <input type="text">
+                <input type="submit" value="Tambahkan">
+
+                <!-- Tambahkan tag penutup form -->
+            </form>
         </div>
-        <a href="/index" class="cancel-button"></span>Kembali</a>
+        <a href="/index" class="cancel-button">Kembali</a>
     </div>
 </body>
 

@@ -26,9 +26,20 @@ app.get('/index', (req, res) => {
     );
 });
 
-// Tambahkan rute untuk menuju ke halaman penambahan item
 app.get('/new', (req, res) => {
     res.render('new.ejs');
+});
+
+// Tambahkan route method untuk menambahkan item 
+app.post('/create', (req, res) => {
+    connection.query(
+        'SELECT * FROM items',
+        (error, results) => {
+            res.render('index.ejs', {
+                items: results
+            });
+        }
+    );
 });
 
 app.listen(3000);
