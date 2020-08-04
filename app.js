@@ -53,10 +53,19 @@ app.post('/delete/:id', (req, res) => {
     );
 });
 
-// tambahkan rute untuk halaman edit
 app.get('/edit/:id', (req, res) => {
-    res.render('edit.ejs');
-});
+    // Ketikan code untuk mendapatkan item yang dipilih dari database 
+    connection.query(
+        'SELECT * FROM items WHERE id = ?',
+        [req.params.id],
+        (error, results) => {
+            res.render('edit.ejs', {
+                item: results[0]
+            });
+        }
+    );
+    // Hapus code di bawah
 
+});
 
 app.listen(3000);
